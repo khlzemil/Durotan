@@ -1,0 +1,40 @@
+﻿@using Core.Entities
+@using Web.Areas.Admin.ViewModels.Tag
+@model TagIndexVM
+
+
+<a class="btn btn-primary" asp-action="create" asp-controller="tag">Create</a>
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Tag name</th>
+            <th scope="col">Created at</th>
+            <th scope="col">Modified at</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tag in Model.Tags)
+        {
+            <tr>
+                <td>@tag.Id</td>
+                <td>@tag.Title</td>
+                <td>@tag.CreatedAt.ToShortDateString()</td>
+                <td>@tag.ModifiedAt.ToShortDateString()</td>
+                <td>
+                    <form method="post" asp-action="delete" asp-controller="tag" asp-route-id="@tag.Id">
+                        <a class="btn btn-warning m-2" asp-action="update" asp-controller="tag" asp-route-id="@tag.Id">Update</a>
+                        <br>
+                        <a class="btn btn-light m-2" asp-action="addproducts" asp-controller="tag" asp-route-id="@tag.Id">Add Product</a>
+                        <br>
+                        <a class="btn btn-info" asp-action="details" asp-controller="tag" asp-route-id="@tag.Id">Info</a>
+                        <br>
+                        <button type="submit" class="btn btn-primary m-2">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

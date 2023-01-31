@@ -1,0 +1,50 @@
+﻿@using Core.Constants
+@using Web.Areas.Admin.ViewModels.Form
+@model FormIndexVM
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">FullName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Status</th>
+            <th scope="col">CreateAt</th>
+            <th scope="col">ModifiedAt</th>
+              <th scope="col">Actions</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var form in Model.Forms)
+        {
+            <tr>
+                <td>@form.Id</td>
+                <td>@form.FullName</td>
+                <td>@form.Email</td>
+                <td>@form.Subject</td>
+                <td>@form.Status</td>
+                   <td>@form.CreatedAt.ToShortDateString()</td>
+                   <td>@form.ModifiedAt.ToShortDateString()</td>
+                <td>
+                    @if (!(form.Status == FormStatus.Read))
+                    {
+                        <form method="post" asp-action="ChangeStatus" asp-controller="form" asp-route-id="@form.Id">
+                            <button type="submit" class="btn btn-warning">Read</button>
+                        </form>
+                    }
+
+                    <form method="post" asp-action="delete" asp-controller="form" asp-route-id="@form.Id">
+                        <a class="btn btn-info" asp-action="details" asp-controller="form" asp-route-id="@form.Id">Info</a>
+                        <br>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+

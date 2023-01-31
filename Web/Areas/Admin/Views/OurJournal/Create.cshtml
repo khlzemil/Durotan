@@ -1,0 +1,48 @@
+﻿@using Core.Constants
+@using Web.Areas.Admin.ViewModels.OurJournal
+@model OurJournalCreateVM
+
+<form enctype="multipart/form-data" asp-action="create" asp-controller="ourjournal" method="post">
+
+    <label asp-for="Title">Title</label>
+    <textarea asp-for="Title"></textarea>
+    <span asp-validation-for="Title"></span>
+    <div class="form-group">
+        <label asp-for="BlogName">Blog name</label>
+        <input class="form-control" asp-for="BlogName"></input>
+        <span asp-validation-for="BlogName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BlogDate">Blog date</label>
+        <input class="form-control" asp-for="BlogDate">
+        <span asp-validation-for="BlogDate"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="JournalPhoto">Journal Photo</label>
+        <input class="form-control" asp-for="JournalPhoto">
+        <span asp-validation-for="JournalPhoto"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Create</button>
+   <a class="btn btn-danger" asp-action="index" asp-controller="ourjournal">Cancel</a>
+</form>
+
+
+@section Scripts{
+
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Title'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}
+
+

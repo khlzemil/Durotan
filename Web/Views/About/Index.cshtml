@@ -1,0 +1,126 @@
+﻿@using System.Web
+@using Web.ViewModels
+@model AboutIndexVM
+
+
+<section class="first-blog">
+    <div class="text">
+        <h3>Durotan's Story</h3>
+        @foreach (var story in Model.Stories)
+        {
+            <h6>@story.Description</h6>
+        }
+    </div>
+    <div class="image">
+        @foreach (var elem in Model.Stories)
+        {
+            <img src="/images/@elem.PhotoName" alt="">
+        }
+    </div>
+    <div class="brands">
+        <ul>
+            <li>
+                <div class="for-icon">
+                    <img src="https://img.icons8.com/pastel-glyph/64/null/clothes--v2.png" />
+                </div>
+                <div class="about">
+                    <h4 class="title">QUALITY MATERIALS</h4>
+                    <h5 class="text">Gurantee 100% polyurethane and 100% polyester</h5>
+                </div>
+
+            </li>
+            <li>
+                <div class="for-icon">
+                    <img src="https://img.icons8.com/ios/64/null/water-transportation.png" />
+                </div>
+                <div class="about">
+                    <h4 class="title">FREE SHIPPING</h4>
+                    <h5 class="text">We free shipping for all oders over $199</h5>
+                </div>
+
+            </li>
+            <li>
+                <div class="for-icon">
+                    <img src="https://img.icons8.com/ios/64/null/cheap-2.png" />
+                </div>
+                <div class="about">
+                    <h4 class="title">SECURE PAYMENT</h4>
+                    <h5 class="text">Guarante 100% secure payment online on our website</h5>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="second-blog">
+    <div class="separator">
+        @foreach (var company in Model.Companies)
+        {
+            <div class="sides">
+                <img src="./images/@company.PhotoName" alt="">
+                <div class="writing">
+                    <h3 class="tittle">@company.Title</h3>
+                    <h5 class="text">
+                        @Html.Raw(@company.Text)
+                    </h5>
+                    <h6 class="description">
+                        @Html.Raw(@company.Description)
+                    </h6>
+                </div>
+            </div>
+        }
+    </div>
+
+</section>
+<section class="third-blog">
+    <div class="store-list">
+        <h3 class="head">STORES LIST</h3>
+        <ul class="list">
+            <li>
+                <ul class="store-loc">
+                    <li><h6>New York</h6></li>
+                    <li class="internal-list">
+                        <ul>
+                            <li><h5>STORE 1</h5></li>
+                            <li>68 Atlantic Ave St, Brooklyn, NY 90002, USA</li>
+                            <li>(+005) 5896 72 78 79</li>
+                            <li>hellony@durotan.com.us</li>
+                        </ul>
+                    </li>
+
+                    <li class="internal-list">
+                        <ul>
+                            <li><h5>STORE 2</h5></li>
+                            <li>172 Richmond Hill Ave St, Stamford, NY 90002, USA</li>
+                            <li>(+005) 5896 03 04 05</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="store-loc">
+                    <li><h6>London</h6></li>
+                    <li class="internal-list">
+                        <ul>
+                            <li>88 Landsome Way St, Stockwell, London 534, UK</li>
+                            <li>(+089) 5896 26 26 27</li>
+                            <li>hellold@durotan.com.uk</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="store-loc">
+                    <li><h6>Berlin</h6></li>
+                    <li class="internal-list">
+                        <ul>
+                            <li>205 Luckstrabe St, Rummelburg, Berlin 77502, Germany</li>
+                            <li>(+0668) 5896 45 45 46</li>
+                            <li>helloge@durotan.com.us</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>

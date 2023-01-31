@@ -1,0 +1,56 @@
+﻿@using Core.Constants
+@using Web.Areas.Admin.ViewModels.Article
+@model ArticleCreateVM
+
+<form enctype="multipart/form-data" asp-action="create" asp-controller="article" method="post">
+
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <textarea asp-for="Title"></textarea>
+        <span asp-validation-for="Title"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ArticleName">Article name</label>
+        <input class="form-control" asp-for="ArticleName"></input>
+        <span asp-validation-for="ArticleName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ArticleDate">Article date</label>
+        <input class="form-control" asp-for="ArticleDate"></input>
+        <span asp-validation-for="ArticleDate"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Author">Author</label>
+        <input class="form-control" asp-for="Author">
+        <span asp-validation-for="Author"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ArticlePhoto">Article Photo</label>
+        <input class="form-control" asp-for="ArticlePhoto">
+        <span asp-validation-for="ArticlePhoto"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a class="btn btn-danger" asp-action="index" asp-controller="article">Cancel</a>
+</form>
+
+
+@section Scripts{
+
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Title'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}
+
+

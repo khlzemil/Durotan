@@ -1,0 +1,49 @@
+﻿@using Web.Areas.Admin.ViewModels.OurJournal
+@model OurJournalIndexVM
+
+
+@if(Model.OurJournal == null)
+{
+<a class="btn btn-primary" asp-action="create" asp-controller="ourjournal">Create</a>
+    
+}
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Blog name</th>
+            <th scope="col">Blog date</th>
+            <th scope="col">CreateAt</th>
+            <th scope="col">ModifiedAt</th>
+              <th scope="col">Photo</th>
+              <th scope="col">Actions</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ourjournal in Model.OurJournal)
+        {
+            <tr>
+                <td>@ourjournal.Id</td>
+                <td>@ourjournal.Title</td>
+                <td>@ourjournal.BlogName</td>
+                <td>@ourjournal.BlogDate.ToShortDateString()</td>
+                <td>@ourjournal.CreatedAt.ToShortDateString()</td>
+                <td>@ourjournal.ModifiedAt.ToShortDateString()</td>
+                <td><img class="img-thumbnail" style="width:50px ; height:50px; object-fit:cover" src="~/images/@ourjournal.PhotoName" /></td>
+               
+                <td>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="ourjournal" asp-route-id="@ourjournal.Id">Update</a>
+                    <form method="post" asp-action="delete" asp-controller="ourjournal" asp-route-id="@ourjournal.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+

@@ -1,0 +1,214 @@
+﻿@using Web.ViewModels
+@model ShopIndexVM
+
+<section class="shop">
+    <div class="writing">
+        <h3 class="title">Men's Clothing</h3>
+    </div>
+    <div class="filter">
+        <div class="text">
+            <ul class="filter-text">
+                <li class="filter" id="btnFilter"><span><i class="bi bi-filter"></i></span>Filter</li>
+                <li class="tags-list">
+                    <ul class="tags">
+                       
+                    </ul>
+                </li>
+            </ul>
+            <h3 class="products-count">@Model.Products.Count Products found</h3>
+        </div>
+    </div>
+    <div class="filter-table">
+        <div class="close">X</div>
+        <ul class="list-filter">
+            <li class="category">
+                <ul class="lists">
+                    <li class="title"><h3>Category</h3></li>
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <li class="tagList"><a href="#" data-id="@tag.Id" id="tag">@tag.Title</a></li>
+                    }
+                </ul>
+            </li>
+            <li class="materials">
+                <ul class="lists">
+                    <li class="title"><h3>Materials</h3></li>
+                    <form action="">
+                    <li>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Cotton">
+                        <label for="vehicle1"> Cotton</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle2" name="vehicle2" value="Down">
+                        <label for="vehicle2"> Down</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle3" name="vehicle3" value="Houndstooth">
+                        <label for="vehicle3"> Houndstooth</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle4" name="vehicle4" value="Leather">
+                        <label for="vehicle4"> Leather</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle5" name="vehicle5" value="Nappa Leather">
+                        <label for="vehicle5">Nappa Leather</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle6" name="vehicle6" value="Suede">
+                        <label for="vehicle6"> Suede</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle7" name="vehicle7" value="Wool">
+                        <label for="vehicle7"> Wool</label><br>
+                    </li>
+                    </form>
+
+                </ul>
+            </li>
+            <li class="colors">
+                <ul class="lists">
+                    <li class="title"><h3>Colors</h3></li>
+                    <form action="">
+                    <li>
+                        <input type="checkbox" id="color1" name="color1" value="Cotton">
+                        <label for="color1"> Black</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="color2" name="color2" value="Down">
+                        <label for="color2"> White</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle3" name="vehicle3" value="Houndstooth">
+                        <label for="vehicle3"> Red</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle4" name="vehicle4" value="Leather">
+                        <label for="vehicle4"> Orange</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle5" name="vehicle5" value="Nappa Leather">
+                        <label for="vehicle5">Green</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle6" name="vehicle6" value="Suede">
+                        <label for="vehicle6"> Pink</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle7" name="vehicle7" value="Wool">
+                        <label for="vehicle7"> Brown</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle7" name="vehicle7" value="Wool">
+                        <label for="vehicle7"> Grey</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle7" name="vehicle7" value="Wool">
+                        <label for="vehicle7"> Beige</label><br>
+                    </li>
+                    </form>
+                </ul>
+            </li>
+            <li class="size">
+                <ul class="lists">
+                    <li class="title"><h3>Size</h3></li>
+                    <form action="">
+                    <li>
+                        <input type="checkbox" id="color1" name="color1" value="Cotton">
+                        <label for="color1"> XS</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="color2" name="color2" value="Down">
+                        <label for="color2"> S</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle3" name="vehicle3" value="Houndstooth">
+                        <label for="vehicle3"> M</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle4" name="vehicle4" value="Leather">
+                        <label for="vehicle4"> L</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle5" name="vehicle5" value="Nappa Leather">
+                        <label for="vehicle5">XL</label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle6" name="vehicle6" value="Suede">
+                        <label for="vehicle6"> XXL</label><br>
+                    </li>
+                    </form>
+                </ul>
+            </li>
+            <li class="price">
+                <ul class="lists">
+                    <li class="title"><h3>Search</h3></li>
+                    <li>
+                        <div class="arrange">
+                            <form method="get" asp-action="index" asp-controller="shop">
+                                <input asp-for="Title" type="search" placeholder="Enter product name" class="search-doctor-input">
+                                <button type="submit" style="background-color: #928656; padding: 0 1rem; color:white; border: 1px solid #928656" class="button">Search</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="stock" id="Tural">
+        @foreach (var product in Model.Products)
+        {
+            <div class="each-product">
+                <img src="./images/@product.MainPhotoName" alt="">
+                <div class="add-cart">
+                    <h4 id="addToCart" data-price="@product.Cost" data-title="@product.Name" data-photoname="@product.MainPhotoName" data-id="@product.Id"><a class="addToCart" href="#">ADD TO CART</a></h4>
+                </div>
+                <div class="about">
+                    <a asp-action="details" asp-controller="shop" asp-route-id="@product.Id"><h5 class="product-name">@product.Name</h5></a>
+                    <ul class="cost-list">
+                        <li><h5 class="current-cost">$@product.Cost</h5></li>
+                        <li><h5 class="discount">$@product.OldCost</h5></li>
+                    </ul>
+                </div>
+            </div>
+        }
+        
+    </div>
+    <nav data-aos="fade-right" style="display: flex; justify-content: center; margin-bottom: 20px;" aria-label="Page navigation example">
+    <ul class="pagination" >
+        <li class="page-item">
+            @if (Model.Page > 1)
+            {
+                <div>
+                    @{
+                        var prevPage = @Model.Page - 1;
+
+                            <a itemprop="url" asp-action="index" asp-controller="shop" asp-route-page="@prevPage" class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                    }
+                </div>
+            }
+        </li>
+
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="@(Model.Page==i ? "active disabled" : "inactive")"><a   asp-action="index" class="page-link " asp-controller="shop" asp-route-page="@i">@i</a></li>
+        }
+
+        @if (Model.PageCount != Model.Page)
+        {
+            <div>
+                @{
+                    var nextPage = @Model.Page + 1;
+                        <a itemprop="url" asp-action="index" asp-controller="shop"  asp-route-page="@nextPage" class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                }
+            </div>
+        }
+    </ul>
+</nav>
+</section>

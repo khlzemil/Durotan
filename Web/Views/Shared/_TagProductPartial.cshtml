@@ -1,0 +1,20 @@
+﻿@using Web.ViewModels
+@model ShopTagProductIndexVM
+
+
+@foreach (var product in Model.Tag.ProductTags)
+{
+    <div class="each-product">
+        <img src="./images/@product.Product.MainPhotoName" alt="">
+        <div class="add-cart">
+            <h4 id="addToCart" data-price="@product.Product.Cost" data-title="@product.Product.Name" data-photoname="@product.Product.MainPhotoName" data-id="@product.Id"><a class="addToCart" href="#">ADD TO CART</a></h4>
+        </div>
+        <div class="about">
+            <a asp-action="details" asp-controller="shop" asp-route-id="@product.Product.Id"><h5 class="product-name">@product.Product.Name</h5></a>
+            <ul class="cost-list">
+                <li><h5 class="current-cost">$@product.Product.Cost</h5></li>
+                <li><h5 class="discount">$@product.Product.OldCost</h5></li>
+            </ul>
+        </div>
+    </div>
+}

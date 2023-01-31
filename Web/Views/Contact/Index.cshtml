@@ -1,0 +1,107 @@
+﻿@using Core.Constants
+
+@using System.Web
+@using Web.ViewModels
+@model ContactIndexVM
+
+
+<section class="first-contact">
+        <div class="text">
+            <h3>Contact Us</h3>
+            <h6>We love to hear from you on our customer service, merchandise,
+                website or any topics you want to share with us</h6>
+        </div>
+        <div class="map">
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe  id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+
+                    </iframe>
+                    <a href="https://123movies-to.org">
+
+                    </a><br>
+                    <a href="https://www.embedgooglemap.net">embed google</a>
+                    <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:100%;}</style>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="second-contact">
+        <div class="store-list">
+            <h3 class="head">STORES LIST</h3>
+            <ul class="list">
+                <li>
+                    <ul class="store-loc">
+                        <li><h6>New York</h6></li>
+                        <li class="internal-list">
+                            <ul>
+                                <li><h5>STORE 1</h5></li>
+                                <li>68 Atlantic Ave St, Brooklyn, NY 90002, USA</li>
+                                <li>(+005) 5896 72 78 79</li>
+                                <li>hellony@durotan.com.us</li>
+                            </ul>
+                        </li>
+                        
+                        <li class="internal-list">
+                            <ul>
+                                <li><h5>STORE 2</h5></li>
+                                <li>172 Richmond Hill Ave St, Stamford, NY 90002, USA</li>
+                                <li>(+005) 5896 03 04 05</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="store-loc">
+                        <li><h6>London</h6></li>
+                        <li class="internal-list">
+                            <ul>
+                                <li>88 Landsome Way St, Stockwell, London 534, UK</li>
+                                <li>(+089) 5896 26 26 27</li>
+                                <li>hellold@durotan.com.uk</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="store-loc">
+                        <li><h6>Berlin</h6></li>
+                        <li class="internal-list">
+                            <ul>
+                                <li>205 Luckstrabe St, Rummelburg, Berlin 77502, Germany</li>
+                                <li>(+0668) 5896 45 45 46</li>
+                                <li>helloge@durotan.com.us</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="third-contact">
+
+        <div class="text">
+            <h3>Drop Us A
+                Line</h3>
+        </div>
+        
+        <div class="form-div">
+            <form enctype="multipart/form-data" asp-action="index" asp-controller="contact" method="post" class="form">
+                
+                <input asp-for="Subject" class="subject" type="text" placeholder="Subject optional">
+                 <span asp-validation-for="Subject"></span>
+
+                <textarea asp-for="Message" class="message" type="textarea" placeholder="Write your message here"></textarea>
+                 <span asp-validation-for="Message"></span>
+
+                <input asp-for="FullName" class="fullname" type="text" placeholder="Full name">
+                 <span asp-validation-for="FullName"></span>
+
+                <input asp-for="Email" class="yourmail" type="email" placeholder="Your email">
+                 <span asp-validation-for="Email"></span>
+
+                <input class="button" type="submit" value="Send Message">
+            </form>
+        </div>
+        
+    </section>

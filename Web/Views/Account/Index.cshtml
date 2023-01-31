@@ -1,0 +1,52 @@
+﻿@using Web.ViewModels.Account
+@model MultipleVM
+
+@{
+    var returnUrl = Context.Request.Query["returnUrl"];
+}
+
+<section class="auth-section">
+    <section>
+        <div class="page">
+            <div class="welcome">
+                <h2>Welcome To Durotan!</h2>
+                <p>Hello Dear, I am Emil. How it is?</p>
+                <button class="sign_in">Sign In</button>
+                <button class="btn">Sign Up</button>
+            </div>
+            <div class="sign_up">
+                <form asp-action="register" asp-controller="account" method="post">
+                    <h2>Sign Up your Account</h2>
+
+                    <input asp-for="AccountRegisterVM.Username" type="text" name="username" placeholder="Username" required><br>
+                    <span asp-validation-for="AccountRegisterVM.Username"></span>
+
+                    <input asp-for="AccountRegisterVM.Email" type="email" name="email" placeholder="Email" required><br>
+                    <span asp-validation-for="AccountRegisterVM.Email"></span>
+
+                    <input asp-for="AccountRegisterVM.Password" type="password" name="password" placeholder="Password" required><br>
+                    <span asp-validation-for="AccountRegisterVM.Password"></span>
+                    <input asp-for="AccountRegisterVM.ConfirmPassword" type="password" name="confirmpassword" placeholder="Confirm password" required><br>
+                    <span asp-validation-for="AccountRegisterVM.ConfirmPassword"></span>
+                    <input type="submit" name="sign_up" value="Sign Up" class="up">
+                </form>
+            </div>
+            <div class="login">
+                <form asp-action="login" asp-controller="account" method="post">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="AccountLoginVM.ReturnUrl" type="hidden" value="@returnUrl" />
+
+                    <h2>Login your Account</h2>
+                    <input asp-for="AccountLoginVM.Username" type="text" name="username" placeholder="Username" required><br>
+                    <span asp-validation-for="AccountLoginVM.Username"></span>
+                    <input asp-for="AccountLoginVM.Password" type="password" name="password" placeholder="Password" required><br>
+                    <span asp-validation-for="AccountLoginVM.Password"></span>
+                    <input type="submit" name="sign_in" value="Sign In" class="in">
+
+                </form>
+                <a class="forgotPassword" asp-controller="Account" asp-action="ForgotPassword">Forgot passsword?</a>
+            </div>
+        </div>
+    </section>
+</section>

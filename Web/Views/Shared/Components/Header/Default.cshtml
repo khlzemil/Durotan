@@ -1,0 +1,47 @@
+﻿<section class="nav-section">
+        <nav class="navigation">
+            <ul class="nav-list">
+                <div class="center">
+                    <div class="logo">
+                <li class="logo"><a asp-action="index" asp-controller="home">Durotan</a></li>
+                </div>
+                <div class="nav-direction">
+                <li class="nav-bar"><a asp-action="index" asp-controller="home">Home</a></li>
+                <li class="nav-bar"><a asp-action="index" asp-controller="about">About</a></li>
+                <li class="nav-bar"><a asp-action="index" asp-controller="blog">Blog</a></li>
+                <li class="nav-bar"><a asp-action="index" asp-controller="contact">Contact</a></li>
+                <li class="nav-bar"><a asp-action="index" asp-controller="shop">Shop</a></li>
+
+                </div>
+                </div>
+                <div class="language">
+                </div>
+                <div class="icon">
+                    @if (!(User.Identity.IsAuthenticated))
+                    {
+                    <li class="right-nav"><a asp-action="index" asp-controller="account"><i class="bi bi-person-fill"></i></a></li>
+                    }
+                    else
+                    {
+                    <a class="right-nav" class="p-2 pl-0"><span class="login">@User.Identity.Name.ToLower()</span></a>
+                    <a class="right-nav" asp-action="logout" asp-controller="account" class="p-2 pl-0"><span class="login">Log out</span></a>
+                    <li class="right-nav"><a asp-action="index" asp-controller="basket"><i class="bi bi-cart2"></i></a></li>
+
+                    }
+
+                </div>
+            </ul>
+
+        </nav>
+        <label>
+            <input type="checkbox">
+            <span class="menu"> <span class="hamburger"></span> </span>
+            <ul>
+                <li> <a asp-action="index" asp-controller="home">Home</a> </li>
+                <li> <a asp-action="index" asp-controller="shop">Shop</a> </li>
+                <li> <a asp-action="index" asp-controller="product">Product</a> </li>
+                <li> <a asp-action="index" asp-controller="blog">Blog</a> </li>
+                <li> <a asp-action="index" asp-controller="about">About</a> </li>
+            </ul>
+        </label>
+    </section>

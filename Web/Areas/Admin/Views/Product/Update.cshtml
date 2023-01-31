@@ -1,0 +1,121 @@
+﻿@using Core.Constants
+@using Web.Areas.Admin.ViewModels.Product
+@model ProductUpdateVM
+
+<form enctype="multipart/form-data" asp-action="update" asp-controller="product" method="post">
+
+    <div class="form-group">
+        <label asp-for="Specificity"></label>
+        <input asp-for="Specificity" />
+        <span asp-validation-for="Specificity"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cost"></label>
+        <input asp-for="Cost" />
+        <span asp-validation-for="Cost"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OldCost"></label>
+        <input asp-for="OldCost" />
+        <span asp-validation-for="OldCost"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductStatus"></label>
+        <input asp-for="ProductStatus" />
+        <span asp-validation-for="ProductStatus"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Color"></label>
+        <input asp-for="Color" />
+        <span asp-validation-for="Color"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MainPhoto"></label>
+        <input asp-for="MainPhoto" />
+        <span asp-validation-for="MainPhoto"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Photos">Photos</label>
+        <input class="form-control" asp-for="Photos">
+        @{
+            if (Html.ViewData.ModelState["Photos"] != null)
+            {
+                foreach (var error in Html.ViewData.ModelState["Photos"].Errors)
+                {
+                        <li>@error.ErrorMessage</li>
+                }
+            }
+
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a class="btn btn-danger" asp-action="index" asp-controller="product">Cancel</a>
+</form>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Photo</th>
+                <th>Order</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var photo in Model.ProductPhotos)
+            {
+                <tr>
+                    <td>@photo.Id</td>
+                    <td><img class="img-thumbnail" style="width:50px ; height:50px; object-fit:cover" src="~/images/@photo.PhotoName" /></td>
+                    <td>@photo.Order</td>
+                    <td>
+
+                        <a class="btn btn-primary" asp-action="updatephoto" asp-controller="product" asp-route-id="@photo.Id">Update</a>
+                        <form method="post" asp-action="DeletePhoto" asp-controller="product" asp-route-id="@photo.Id" asp-route-ProductId="@photo.ProductId">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+
+                    </td>
+
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}

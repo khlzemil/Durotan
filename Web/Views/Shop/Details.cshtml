@@ -1,0 +1,120 @@
+﻿@using Web.ViewModels
+@model ShopDetailsVM
+
+
+<section class="main-section">
+    <!-- single product details -->
+    <div class="small-container single-product">
+        <div class="row">
+            <div class="col-2">
+                <img class="big-image" src="~/images/@Model.MainPhotoName" alt="" width="100%" id="ProductImg" />
+
+                <div class="small-img-row">
+
+                    @foreach (var photo in Model.ProductPhotos)
+                    {
+                        <div class="small-img-col">
+                            <img src="/images/@photo.PhotoName" alt="" width="100%" class="small-img" />
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="description">
+                    <h4>@Model.Specificity</h4>
+                    <h1>@Model.Name</h1>
+                    <h4>$@Model.Cost</h4>
+                    <h4>@Model.Status</h4>
+                    <div class="flex">
+                        <select>
+                            <option>Select Size</option>
+                            <option>XXL</option>
+                            <option>XL</option>
+                            <option>L</option>
+                            <option>M</option>
+                            <option>S</option>
+                        </select>
+                    </div>
+
+                    <input type="number" value="1" />
+                    <a href="" class="btn">Add To Cart</a>
+
+                    <h3>Description <i class="fas fa-indent"></i></h3>
+                    <p>@Model.Color</p>
+                    @*<p>@Model.Tag</p>*@
+                    <br />
+                    <p>
+                        @Html.Raw(@Model.Description)
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- title -->
+    <div class="small-container">
+        <div class="row row-2">
+            <h2 class="related">Related Products</h2>
+            <p class="related">View more</p>
+        </div>
+    </div>
+
+    <!-- products -->
+
+    <div class="small-container">
+        <div class="row">
+            @foreach (var prod in Model.Products)
+            {
+                <div class="col-4">
+                    <img src="/images/@prod.MainPhotoName" alt="" />
+                    <h4>@prod.Name</h4>
+                    <div class="rating">
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                    </div>
+                    <p>$@prod.Cost</p>
+                </div>
+            }
+            
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- js for toggle menu -->
+    <script>
+        var MenuItems = document.getElementById('MenuItems');
+        MenuItems.style.maxHeight = '0px';
+
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == '0px') {
+                MenuItems.style.maxHeight = '200px';
+            } else {
+                MenuItems.style.maxHeight = '0px';
+            }
+        }
+    </script>
+
+    <!-- js for product gallery -->
+
+    <script>
+        var ProductImg = document.getElementById('ProductImg');
+        var SmallImg = document.getElementsByClassName('small-img');
+        SmallImg[0].onclick = function() {
+            ProductImg.src = SmallImg[0].src;
+        };
+        SmallImg[1].onclick = function() {
+            ProductImg.src = SmallImg[1].src;
+        };
+        SmallImg[2].onclick = function() {
+            ProductImg.src = SmallImg[2].src;
+        };
+        SmallImg[3].onclick = function() {
+            ProductImg.src = SmallImg[3].src;
+        };
+    </script>
+</section>

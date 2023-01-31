@@ -1,0 +1,209 @@
+﻿@using System.Web
+@using Web.ViewModels
+@model HomeIndexVM
+
+
+<section class="first_section">
+    <div class="slider-container">
+        <div class="left-slide">
+            @foreach (var slider in Model.HomeMainSliders)
+
+            {
+
+                <div style="background-color: #666666;">
+
+
+                    <h1>@slider.Title</h1>
+                    <p>@slider.Text</p>
+                    <p>@Html.Raw(@slider.Description)</p>
+
+                </div>
+
+
+            }
+        </div>
+        <div class="right-slide">
+            @foreach (var sliderPhoto in Model.HomeMainSliders)
+
+            {
+
+                <div style="background-image: url('./images/@sliderPhoto.PhotoName');"></div>
+            }
+
+        </div>
+        <div class="action-buttons">
+            <button class="down-button">
+                <i class="fas fa-arrow-down"></i>
+            </button>
+
+            <button class="up-button">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </div>
+</section>
+<section class="about-durotan">
+        <div class="brands">
+            <ul>
+                @foreach (var brand in Model.Brands)
+                {
+                    <li><img src="./images/@brand.PhotoName" alt=""></li>
+                }
+            </ul>
+        </div>
+        <div class="about-summary">
+            <h2>About Durotan</h2>
+            <p>
+                Established in 1991, Durotan & Logan Cee, 2 fashion artists work together in UK, start from design the casual for people around their location.The inspiration got from natural, 
+                color pastel & activities the daily. Durotan’s items alway look very basic but never out trend, easy to mixed with any style. 
+                Then, they developed with serires 5 stores cover all United Kingdom
+            </p>
+        </div>
+        <div class="about-element">
+            <div class="left-side">
+                <ul class="list">
+                    @foreach (var feature in Model.Features)
+                    {
+                        <li>
+                        <div class="for-icon">
+                            <img src="./images/@feature.PhotoName"/>
+                        </div>
+                        <div class="about">
+                            <h4 class="title">@feature.Title</h4>
+                            <h5 class="text">@Html.Raw(@feature.Description)</h5>
+                        </div>
+                        
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="right-side">
+                <div class="image-div-first">
+                    <img src="./images/remen1.png" alt="image_1">
+                </div>
+                <div class="image-div-second">
+                    <img src="./images/remen2.png" alt="image_2">
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="featured-collections">
+    <div class="title">
+        <h3>Featured Collections</h3>
+        <h6>New arrivals, best seling or any discount programs, click on any collection that you’re looking for</h6>
+    </div>
+    <div class="collections-info">
+        @foreach (var collectionFeatured in Model.Collections)
+        {
+            <div class="container">
+            <div class="text-collection">
+                <div class="text">
+                    <h6 class="text_one">@collectionFeatured.Title</h6>
+                    <h3 class="text_two">@collectionFeatured.Title</h3>
+                    <h5 class="text_three">@Html.Raw(@collectionFeatured.Description)</h5>
+                    <p class="button">@collectionFeatured.ExploreButton</p>
+                </div>
+                <div class="image"><img src="./images/@collectionFeatured.CollectionPhotoName" alt=""></div>
+            </div>
+            </div>
+        }
+        
+    </div>
+</section>
+<section class="product-slider">
+    <h4 class="our-products">Our Products</h4>
+    <ul class="sub-nav">
+        <li>Best Selling</li>
+        <li>New Arrivals</li>
+        <li>Editor's pick</li>
+        <li>View All Products<span class="arrow"> > </i></span></li>
+    </ul>
+    <div class="slider">
+        <section class="product">
+            <button class="pre-btn"><img src="~/images/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="~/images/arrow.png" alt=""></button>
+            <div class="product-container">
+                @foreach (var product in Model.Products)
+                {
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">Special</span>
+                        <img src="~/images/@product.MainPhotoName" class="product-thumb" alt="">
+                        <button class="card-btn">add to card</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">@product.Name.Substring(0, 5)...</h2>
+                        <p class="product-short-description">@Html.Raw(@product.Description.Substring(0, 25).Trim())...</p>
+                        <span class="price">$@product.Cost</span><span class="actual-price">$@product.OldCost</span>
+                    </div>
+                </div>
+                }
+                
+            </div>
+        </section>
+    </div>
+</section>
+<section class="home-blog">
+    <div class="blog-header">
+        <h3 class="blog-title">Our Journal</h3>
+        <ul class="blog-list">
+            <li>Alway catch up the fashion trending, discover lookbook & more</li>
+            <li><a class="articles_link" asp-action="index" asp-controller="blog">ALL ARTICLES</a> <span class="arrow">--></span></li>
+        </ul>
+    </div>
+    <div class="wrapper">
+
+        @foreach (var article in Model.Articles)
+        {
+          <div class="blog-main">
+            <div class="image-blog">
+                <img src="./images/@article.PhotoName" alt="">
+            </div>
+            <div class="writing-blog">
+                <div class="calendar">
+                    <h4 class="date"><span class="day">@article.ArticleDate.Day</span> @article.ArticleDate.ToString(" MMMM, yyyy")</h4>
+                </div>
+                <div class="info">
+                    <h2 class="slogan">@Html.Raw(@article.Title)</h2>
+                    <p class="theme">@article.ArticleName /<span class="author"> @article.Author</span></p>
+                </div>
+            </div>
+        </div>  
+        }
+        
+    </div>
+
+</section>
+<section class="social-media">
+    <div class="text">
+        <h3 class="follow-text">FOLLOW OUR INSTAGRAM</h3>
+        <h6 class="text-link">Our official instagram <span><a href="http://demo2.ninethemes.net/durotan20/html/index.html">@@durotan</a></span> or handtags <span><a href="#">#durotan.clothing</a></span></h6>
+    </div>
+    <div class="wrapper">
+        <div class="socialmedia-img">
+            <img src="~/images/instagram_1.jpg" alt="instagram">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+
+        <div class="socialmedia-img">
+            <img src="~/images/instagram_2.jpg" alt="instagram">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+
+        <div class="socialmedia-img">
+            <img src="~/images/instagram_3.jpg" alt="instagram">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+
+        <div class="socialmedia-img">
+            <img src="~/images/instagram_1.jpg" alt="instagram">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+
+        <div class="socialmedia-img">
+            <img src="~/images/instagram_5.jpg" alt="instagram">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+    </div>
+
+</section>

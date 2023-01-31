@@ -1,0 +1,21 @@
+﻿@using Core.Constants
+@using Web.Areas.Admin.ViewModels.Brand
+@model BrandUpdateVM
+
+<form enctype="multipart/form-data" asp-action="update" asp-controller="brand" method="post">
+
+    <div class="form-group">
+        <label asp-for="BrandPhoto">Brand's photo</label>
+        <input class="form-control" asp-for="BrandPhoto">
+        <span asp-validation-for="BrandPhoto"></span>
+    </div>
+    
+
+    <button type="submit" class="btn btn-primary">Update</button>
+   <a class="btn btn-danger" asp-action="index" asp-controller="brand">Cancel</a>
+
+</form>
+
+
+
+
